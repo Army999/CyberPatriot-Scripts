@@ -129,3 +129,5 @@ dism /online /disable-feature /featurename:TFTP
 dism /online /disable-feature /featurename:TelnetClient
 dism /online /disable-feature /featurename:TelnetServer
 goto:EOF
+
+exit
