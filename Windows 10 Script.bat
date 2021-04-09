@@ -1,7 +1,7 @@
 @echo off
 echo Copyright (c) Army999
 
-set functions=Firewall localsecpol audit delfiles remoteDesk
+set functions=Firewall localsecpol audit delfiles remoteDesk diableGueAdm ftp ssh
 
 :Firewall
 netsh advfirewall set allprofiles state on
