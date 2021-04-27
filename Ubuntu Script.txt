@@ -87,6 +87,7 @@ firewallFun(){
 	#Please verify that the firewall wont block any services, such as an Email server, when defaulted.
 	#I will back up iptables for you in and put it in /iptables/rules.v4.bak and /iptables/rules.v6.bak
 	#Uninstall UFW and install iptables
+	sudo ufw enable
 	apt-get remove -y ufw
 	apt-get install -y iptables
 	apt-get install -y iptables-persistent
