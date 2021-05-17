@@ -250,63 +250,63 @@ scanFun(){
 
 
 passFun(){
-	$ gedit /etc/lightdm/lightdm.conf
+	gedit /etc/lightdm/lightdm.conf
 	  #add "allow-guest=false" to the end
 
-	$ gedit /etc/pam.d/commom-password
+	gedit /etc/pam.d/commom-password
 	  #Add "remeber=5" to the end of the line with "pam_unix.so" in it
 	  #Add "minlen=8" to the end of the line with "pam_unix.so" in it
 	  #Add "uncredit=-1 lcredit=-1 dcredit=-1 ocredit=-1" to the end of the line with "pam_cracklib.so" in it
 
-	$ gedit /etc/login.defs
+	gedit /etc/login.defs
 	  #Change "PASS_MAX_DAYS" to "90"
 	  #Change "PASS_MIN_DAYS" to "10"
 	  #Change "PASS_WARN_AGE" to "7"
 
-	$ gedit /etc/pam.d/common-auth
+	gedit /etc/pam.d/common-auth
 	  #Add "auth required pam_tally2.so deny=5 onerr=fail unlock_time=1800"
 
-	$ sudo gedit /etc/pam.d/system-auth
+	sudo gedit /etc/pam.d/system-auth
 	  #add to second line: "auth required pam_tally2.so deny=3 unlock_time=3600
 	  #add to account section: "account required pam_tally2.so
 	cont
 }
 
 auditFun(){
-	$ apt-get install auditd
+	apt-get install auditd
 	  #install auditing program
-	$ auditctl -e 1
+	auditctl -e 1
 	  #Enable audits
-	$ gedit /etc/audit/auditd.conf
+	gedit /etc/audit/auditd.conf
 	  #view and modify policies as needed
 	cont
 }
 
 userFun(){
-	$ eval getent passwd {$(awk '/^UID_MIN/ {print $2}' /etc/login.defs)..$(awk '/^UID_MAX/ {print $2}' /etc/login.defs)} | cut -d: -f1
+	eval getent passwd {$(awk '/^UID_MIN/ {print $2}' /etc/login.defs)..$(awk '/^UID_MAX/ {print $2}' /etc/login.defs)} | cut -d: -f1
 	  #List of users
-	$ sudo userdel -r 
+	sudo userdel -r 
 	  #insert user after "-r" use command as many times as needed
 	
-	$ sudo gedit /etc/sudoers.d
+	sudo gedit /etc/sudoers.d
 	  #you will have to manually remove sudo perms
 
-	$ sudo gedit /etc/group
+	sudo gedit /etc/group
 	  #you will ahve to manually remove admin perms
 	cont
 } 
 
 addressFun(){
-	$ sudo sysctl -n net.ipv4.tcp_syncookies
+	sudo sysctl -n net.ipv4.tcp_syncookies
 	  #prevents syn cookie attacks
 
-	$ sudo echo net.ipv6.conf.all.disable_ipv6 = 1
+	sudo echo net.ipv6.conf.all.disable_ipv6 = 1
 	  #disables IPv6 addressing
 
-	$ sudo echo 0
+	sudo echo 0
 	  #disables IP forwarding
 
-	$ sudo echo nospoof on
+	sudo echo nospoof on
 	  #prevents IP spoofing
 	cont
 }
