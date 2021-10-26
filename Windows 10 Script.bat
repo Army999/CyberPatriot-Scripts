@@ -1,7 +1,7 @@
 @echo off
 echo Copyright (c) Army999
 
-set functions=Firewall localsecpol audit delfiles remoteDesk diableGueAdm ftp ssh insremoval
+set functions=Firewall localsecpol audit delfiles remoteDesk diableGueAdm ftp ssh insremoval servicestop
 
 :Firewall
 netsh advfirewall set allprofiles state on
@@ -123,6 +123,17 @@ dism /online /disable-feature /featurename:IIS-FTPExtensibility
 dism /online /disable-feature /featurename:TFTP
 dism /online /disable-feature /featurename:TelnetClient
 dism /online /disable-feature /featurename:TelnetServer
+
+servicestop:
+Stop-Service -Name "Remote Registry"
+Stop-Service -Name "SNMP Trap"
+Stop-Service -Name "SSDP Discovery"
+Stop-Service -Name "
+Stop-Service -Name
+Stop-Service -Name
+Stop-Service -Name
+Stop-Service -Name
+Stop-Service -Name
 
 
 exit
